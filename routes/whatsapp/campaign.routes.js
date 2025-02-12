@@ -1,5 +1,5 @@
-const express = require("express");
-const { sendBulkMessages } = require("../../controllers/whatsapp/campaign.controller");
+import express from "express";
+import { sendBulkMessages } from "../../controllers/whatsapp/campaign.controller.js";
 
 const router = express.Router();
 router.post("/campaign", sendBulkMessages);

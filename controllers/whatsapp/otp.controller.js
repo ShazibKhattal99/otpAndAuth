@@ -1,16 +1,73 @@
-const { sendOTP } = require("../../services/whatsapp/otp.service");
+import jwt from "jsonwebtoken";
+import { sendOTP, verifyOTP } from "../../services/whatsapp/otp.service.js";
 
-async function requestOTP(req, res) {
-  const { phone, type } = req.body;
-
+const requestOTP = async (req, res) => {
   try {
-    if (!phone) return res.status(400).json({ message: "Phone number is required." });
-    const response = await sendOTP(phone,type);
-    console.log(response)
-    return res.json({ message: "OTP sent successfully.", data: response });
+    const { phone, type } = req.body; // Extract phone and OTP type from the request
+    const result = await sendOTP(phone, type);
+    console.log("result", result);
+    res
+      .status(200)
+      .json({ success: true, message: "OTP sent successfully!", data: result });
   } catch (error) {
-    return res.status(400).json({ message: error.message });
+    res.status(400).json({ success: false, error: error.message });
   }
-}
+};
 
-module.exports = { requestOTP };
+const verifyOTPHandler = async (req, res) => {
+  try {
+    const { phone, otp, type } = req.body; 
+    const result = await verifyOTP(phone, otp, type);
+    const accessToken = jwt.sign(
+      { phone },
+      process.env.JWT_SECRET,
+      { expiresIn: "12h" }
+    );
+    const refreshToken = jwt.sign(
+      { phone, message: "Verify successful", accessToken },
+      process.env.JWT_REFRESH_SECRET 
+    );
+    res.status(200).json({
+      success: true,
+      message: "OTP verified successfully",
+      accessToken,
+      refreshToken,
+      data: result,
+    });
+  } catch (error) {
+    res.status(400).json({ success: false, error: error.message });
+  }
+};
+
+const signIn = async (req, res) => {
+  const { phone, otp } = req.body;
+  const type = "signin";
+  try {
+    const { success, message } = await verifyOTP(phone, otp, type);
+    if (!success) {
+      return res.status(400).json({ success: false, message });
+    }
+    const accessToken = jwt.sign(
+      { phone },
+      process.env.JWT_SECRET, 
+      { expiresIn: "10m" }
+    );
+    const refreshToken = jwt.sign(
+      { phone },
+      process.env.JWT_REFRESH_SECRET
+    );
+    res.status(200).json({
+      success: true,
+      message: "Sign-in successful",
+      accessToken,
+      refreshToken,
+    });
+  } catch (error) {
+    console.error("Error signing in:", error);
+    res
+      .status(500)
+      .json({ success: false, message: "An error occurred during sign-in" });
+  }
+};
+
+export { requestOTP, verifyOTPHandler, signIn };
