@@ -4,7 +4,6 @@ import connectDB from "./config/db.js";
 import otpRoutes from "./routes/whatsapp/otp.routes.js";
 import cors from 'cors';
 //import campaignRoutes from "./routes/whatsapp/campaign.routes.js";
-
 dotenv.config();
 const app = express();
 app.use(cors());
