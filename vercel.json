@@ -16,7 +16,7 @@
     "NODE_ENV": "production",
     "API_KEY": "your-api-key",
     "MONGO_URI": "mongodb+srv://shazibkhattal99:s8WmyBOcELnf1pAQ@cluster0.pwfdq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
-    "WHATSAPP_ACCESS_TOKEN": "EAAIgzcjZCUFsBOznN6YnYwjDHBFEN0USRUdYtw1kZATiUsoHvhwmeBlNfjuph8ul6VbZC1dlAYwz1DoM8ZBymZB4aNu5erRVqIZCKZBt310XRDNcjvSj9JxR03cs7yW4uFKBjvR9uJ5iY5TWBUhp5ha3xCo8C9plZAgDbAj1qzK5WgrxiN0ZChQNxGMLdqOaTYAhQowZDZD",
+    "WHATSAPP_ACCESS_TOKEN": "EAAIgzcjZCUFsBO7Btxc5AWFWr45ZCPwmxm3ZA6i0lVgucLnKIIz0ynSXbqymJQfvicC3pnCsymvgbXACDhhbXwEXBT2k37OD0OdFuKgUF7GLVP7HSZAzoZCrrLn8fi1kPYxc5E7F7FgxORrJnhmjQOEshXTzVZCOh2MjS4SfyIFecUp4OemBqErtIfhuJMZCq9uogZDZD",
     "WHATSAPP_PHONE_ID": "492735860592562",
     "OTP_MAX_ATTEMPTS": "3"
   }
