@@ -13,7 +13,5 @@ connectDB();
 
 app.use("/api/whatsapp/otp", otpRoutes);
 // app.use("/api/whatsapp/campaign", campaignRoutes);
-
-
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
