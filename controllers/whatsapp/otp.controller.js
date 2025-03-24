@@ -3,7 +3,7 @@ import { sendOTP, verifyOTP } from "../../services/whatsapp/otp.service.js";
 
 const requestOTP = async (req, res) => {
   try {
-    const { phone, type } = req.body; // Extract phone and OTP type from the request
+    const { phone, type } = req.body; 
     const result = await sendOTP(phone, type);
     console.log("result", result);
     res
@@ -18,6 +18,7 @@ const verifyOTPHandler = async (req, res) => {
   try {
     const { phone, otp, type } = req.body; 
     const result = await verifyOTP(phone, otp, type);
+    console.log(result)
     const accessToken = jwt.sign(
       { phone },
       process.env.JWT_SECRET,
