@@ -12,30 +12,12 @@
       "dest": "server.js"
     }
   ],
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "Access-Control-Allow-Origin",
-          "value": "*"  
-        },
-        {
-          "key": "Access-Control-Allow-Methods",
-          "value": "GET, POST, PUT, DELETE, OPTIONS"
-        },
-        {
-          "key": "Access-Control-Allow-Headers",
-          "value": "Content-Type, Authorization"
-        }
-      ]
-    }
-  ],
+  
   "env": {
     "NODE_ENV": "production",
     "API_KEY": "your-apikey",
     "MONGO_URI":"mongodb+srv://shazibkhattal99:N60H981ETlmT0H03@cluster0.pwfdq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
-    "WHATSAPP_ACCESS_TOKEN": "EAAIgzcjZCUFsBO4ecLlJRmwMkOp6Hiwu3T4kW8nxpl1UOLc0uGTWlNVrPgSZCvtx5C5ZBCJZByCshmJ8DQ39ZA5FDRFIrZB5fqUrYNtJkNe3KzGjhR6ayMM8r7TuFLFdJ38GyKzfwWVm7TPUc3KkOZBYoNZAAbKvZCpZCnpe6hE5jz4S4aMhjwwgK5PZAEpxQQZBwwVrN4SjBYZAo1jZBUkptZBl9ZB3M3dZBfZB0a57wqTWD1hCd5",
+    "WHATSAPP_ACCESS_TOKEN": "EAAIgzcjZCUFsBO9aux4vWGkAKUUo21mtocT0zdRZBdYrtTRoPAldDe4t4bO257Fc4U20vqL8ZBur01GiNpiIN0rGPZBZCaF2hLmj7BJWEH0OOmLNbri6Wx5Dpud5ZCJjrEaup4uuydhPd6E094dgFyfcZC4Y62axq43IPB7ZCTH2so7M5oishCYTWPb4nfPxXCynW4fjQB3dZA73XArIsWnz2NZBe4iyZAdXtjVR7kZD",
     "WHATSAPP_PHONE_ID": "492735860592562",
     "OTP_MAX_ATTEMPTS": "3"
   }
