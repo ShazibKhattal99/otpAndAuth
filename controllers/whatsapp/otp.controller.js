@@ -41,9 +41,7 @@ const verifyOTPHandler = async (req, res) => {
         });
       }
 
-      const accessToken = jwt.sign({ phone }, process.env.JWT_SECRET, {
-        expiresIn: "12h"
-      });
+      const accessToken = jwt.sign({ phone }, process.env.JWT_SECRET);
       const refreshToken = jwt.sign(
         { phone, message: "Verify successful", accessToken },
         process.env.JWT_REFRESH_SECRET
@@ -60,9 +58,7 @@ const verifyOTPHandler = async (req, res) => {
 
     // 🔁 Normal flow
     const result = await verifyOTP(phone, otp, type);
-    const accessToken = jwt.sign({ phone }, process.env.JWT_SECRET, {
-      expiresIn: "12h"
-    });
+    const accessToken = jwt.sign({ phone }, process.env.JWT_SECRET);
     const refreshToken = jwt.sign(
       { phone, message: "Verify successful", accessToken },
       process.env.JWT_REFRESH_SECRET
@@ -89,7 +85,7 @@ const signIn = async (req, res) => {
       if (otp !== '123456') {
         return res.status(400).json({ success: false, message: "Invalid OTP for test number" });
       }
-      const accessToken = jwt.sign({ phone }, process.env.JWT_SECRET, { expiresIn: "10m" });
+      const accessToken = jwt.sign({ phone }, process.env.JWT_SECRET);
       const refreshToken = jwt.sign({ phone }, process.env.JWT_REFRESH_SECRET);
       return res.status(200).json({
         success: true,
@@ -104,7 +100,7 @@ const signIn = async (req, res) => {
       return res.status(400).json({ success: false, message });
     }
 
-    const accessToken = jwt.sign({ phone }, process.env.JWT_SECRET, { expiresIn: "10m" });
+    const accessToken = jwt.sign({ phone }, process.env.JWT_SECRET);
     const refreshToken = jwt.sign({ phone }, process.env.JWT_REFRESH_SECRET);
     res.status(200).json({
       success: true,
