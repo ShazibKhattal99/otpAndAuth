@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 import { sendOTP, verifyOTP } from "../../services/whatsapp/otp.service.js";
-
+//
 const requestOTP = async (req, res) => {
   try {
     const { phone, type } = req.body;
