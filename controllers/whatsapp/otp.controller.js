@@ -100,7 +100,7 @@ const signIn = async (req, res) => {
       return res.status(400).json({ success: false, message });
     }
 
-    const accessToken = jwt.sign({ phone }, process.env.JWT_SECRET);
+    const accessToken = jwt.sign({ phone }, process.env.JWT_SECRET,);
     const refreshToken = jwt.sign({ phone }, process.env.JWT_REFRESH_SECRET);
     res.status(200).json({
       success: true,
