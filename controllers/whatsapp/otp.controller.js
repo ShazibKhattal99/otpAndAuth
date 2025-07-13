@@ -27,7 +27,6 @@ const requestOTP = async (req, res) => {
   }
 };
 
-
 const verifyOTPHandler = async (req, res) => {
   try {
     const { phone, otp, type } = req.body;
@@ -41,7 +40,9 @@ const verifyOTPHandler = async (req, res) => {
         });
       }
 
+      // No expiration tokens
       const accessToken = jwt.sign({ phone }, process.env.JWT_SECRET);
+
       const refreshToken = jwt.sign(
         { phone, message: "Verify successful", accessToken },
         process.env.JWT_REFRESH_SECRET
@@ -49,20 +50,26 @@ const verifyOTPHandler = async (req, res) => {
 
       return res.status(200).json({
         success: true,
-        message: "OTP verified successfully (test number)",
+        message: "OTP verified successfully",
         accessToken,
         refreshToken,
-        data: { phone, isTestUser: true }
+        data: {
+          success: true,
+          message: "OTP verified successfully!"
+        }
       });
     }
 
     // 🔁 Normal flow
     const result = await verifyOTP(phone, otp, type);
+
     const accessToken = jwt.sign({ phone }, process.env.JWT_SECRET);
+
     const refreshToken = jwt.sign(
       { phone, message: "Verify successful", accessToken },
       process.env.JWT_REFRESH_SECRET
     );
+
     res.status(200).json({
       success: true,
       message: "OTP verified successfully",
@@ -74,6 +81,7 @@ const verifyOTPHandler = async (req, res) => {
     res.status(400).json({ success: false, error: error.message });
   }
 };
+
 
 
 const signIn = async (req, res) => {

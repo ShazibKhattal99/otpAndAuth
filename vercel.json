@@ -1,22 +1,9 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "server.js",
-      "use": "@vercel/node"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "server.js"
-    }
-  ],
-  
   "env": {
     "NODE_ENV": "production",
     "API_KEY": "your-apikey",
-    "MONGO_URI":"mongodb+srv://shazibkhattal99:N60H981ETlmT0H03@cluster0.pwfdq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
+    "MONGO_URI": "mongodb+srv://shazibkhattal99:N60H981ETlmT0H03@cluster0.pwfdq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
     "WHATSAPP_ACCESS_TOKEN": "EAAIgzcjZCUFsBO9aux4vWGkAKUUo21mtocT0zdRZBdYrtTRoPAldDe4t4bO257Fc4U20vqL8ZBur01GiNpiIN0rGPZBZCaF2hLmj7BJWEH0OOmLNbri6Wx5Dpud5ZCJjrEaup4uuydhPd6E094dgFyfcZC4Y62axq43IPB7ZCTH2so7M5oishCYTWPb4nfPxXCynW4fjQB3dZA73XArIsWnz2NZBe4iyZAdXtjVR7kZD",
     "WHATSAPP_PHONE_ID": "492735860592562",
     "OTP_MAX_ATTEMPTS": "3"
